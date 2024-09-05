@@ -18,9 +18,9 @@ public class Bus {
     }
 
 
-    //run time polymorphism
+    //Run time polymorphism
     public void assign(Driver driver) {
-        //assign the bus driver to the bus
+        //Assign the bus driver to the bus
         if (checkPassengerIsExistOnAnotherBus(driver)) {
 
             if (busDriver == null) {
@@ -44,7 +44,7 @@ public class Bus {
 
 
     public void assign(Person passenger) {
-    //assign the person to the bus
+    //Assign the passenger to the respective bus
         if(checkPassengerIsExistOnAnotherBus(passenger)){
             int passengersCapacity = capacity - 1;
 
@@ -67,7 +67,7 @@ public class Bus {
     }
 
     public void dropPerson(Person passenger) {
-        //person will get drop from the bus
+        //Person will get drop from the bus
         if (passengers.contains(passenger) == true) {
 
             passengers.remove(passenger);
@@ -83,13 +83,11 @@ public class Bus {
     }
 
     public boolean checkPassengerIsExistOnAnotherBus(Person p) {
-
+    //To check the passenger is existed in another bus
         return p.getAssignedBusNumber() == null;
     }
 
-//getters
-
-
+//Getters
     public int getBusNumber() {
 
         return busNumber;

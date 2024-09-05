@@ -12,7 +12,7 @@ public class Student extends Person{
 
     }
 
-//method overriding compile-time polymorphism
+    //Method overriding compile-time polymorphism
     @Override
     public void about() {
 

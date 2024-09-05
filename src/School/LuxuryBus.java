@@ -48,6 +48,7 @@ public class LuxuryBus extends Bus {
     }
 
     private boolean checkEligibilityForPassengers(Person p) {
+        //To check the only eligible passenger are boarding that is only teachers are eligible for luxury bus
         if (!(p instanceof Teacher)) {
             System.out.println("Sorry " + p.getName() + " you must be a teacher to offer this luxury bus");
             return false;
