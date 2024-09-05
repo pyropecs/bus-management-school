@@ -58,7 +58,7 @@ public class LuxuryBus extends Bus {
     }
 
     public void showBusDetails() {
-        System.out.println("it is a luxury bus with " + (airConditioning ? "AC" : "Non-AC"));
+        System.out.println("An luxury bus with " + (airConditioning ? "AC" : "Non-AC"));
         System.out.println("The Bus Number " + getBusNumber());
         System.out.println("the capacity of the bus " + getCapacity());
     }

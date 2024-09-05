@@ -16,6 +16,10 @@ public class Main {
         LuxuryBus luxuryBus = new LuxuryBus(2002,50);
         //Normal Bus is created
         NormalBus normalBus = new NormalBus(3001,50);
+        //Details of the Luxury Bus
+        luxuryBus.showBusDetails();
+        //Details of the Normal Bus
+        normalBus.showBusDetails();
         //To enable air Conditioning
         luxuryBus.enableAirConditioning();
         //Assigning driver to luxury bus
@@ -32,5 +36,9 @@ public class Main {
         normalBus.assign(student);
         //Assigning a passenger to luxury bus, but they are already in normal bus
         luxuryBus.assign(teacher);
+        //Disable air conditioning
+        luxuryBus.disableAirConditioning();
+        //Showing luxury Bus without Air condition
+        luxuryBus.showBusDetails();
     }
 }
