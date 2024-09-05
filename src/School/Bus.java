@@ -5,53 +5,63 @@ import java.util.ArrayList;
 public class Bus {
     private final int busNumber;
     private Driver busDriver;
-    private final ArrayList<Person> passengers = new ArrayList<>();
-    private int capacity;
+    protected ArrayList<Person> passengers = new ArrayList<>();
+    protected int capacity;
+
 
     public Bus(int busNumber, int capacity) {
+
         this.busNumber = busNumber;
         this.capacity = capacity;
 
     }
 
-    public void assign(Driver d) {
 
+//run time polymorphism
+    public void assign(Driver driver) {
+//assign the bus driver to the bus
         if (busDriver == null) {
-            this.busDriver = d;
+            this.busDriver = driver;
+            System.out.println("driver " + driver.getName() + " assigned successfully on bus number " + busNumber);
         } else {
-            System.out.println("Already bus driver is There");
+            System.out.println("Already bus driver "+ this.busDriver.getName()+ " is There");
         }
 
     }
 
 
-    public void assign(Person p) {
-
-        if ( capacity >= passengers.size() ) {
-            passengers.add(p);
-            capacity += 1;
+    public void assign(Person passenger) {
+//assign the person to the bus
+        int passengersCapacity = capacity - 1;
+        if ( passengersCapacity  >= passengers.size() ) {
+            passengers.add(passenger);
+            System.out.println("passenger " + passenger.getName() +  " assigned successfully on bus number " + busNumber);
         } else {
             System.out.println("Bus is Already full");
         }
 
     }
 
-    public void dropPerson(Person p) {
-
-        if (passengers.contains(p) == true) {
-            passengers.remove(p);
-            capacity -= 1;
+    public void dropPerson(Person passenger) {
+//person will get drop from the bus
+        if (passengers.contains(passenger) == true) {
+            passengers.remove(passenger);
+            System.out.println("passenger " + passenger.getName() + " dropped successfully");
         } else {
-            System.out.println("the Passenger is not there in the bus");
+            System.out.println("the Passenger "+passenger.getName() +" is not there in the bus");
         }
 
     }
 
-    public void showBusDetails() {
 
-        System.out.println("The Bus Number " + this.busNumber);
-        System.out.println("the capacity of the bus " + this.capacity);
+//getters
 
+
+    public int getBusNumber() {
+        return busNumber;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
 }

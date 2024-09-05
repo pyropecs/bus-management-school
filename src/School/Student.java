@@ -8,6 +8,7 @@ public Student(String name,String address,int age,char gender,int rollNumber,Str
     this.rollNumber = rollNumber;
     this._class = _class;
 }
+//method overriding compile-time polymorphism
     @Override
     public void about() {
         System.out.println("Im a Student in this school Im studying " + _class + " my roll number is " + rollNumber);

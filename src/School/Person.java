@@ -13,6 +13,8 @@ public Person(String name,String address,int age,char gender){
 }
 
 abstract void about();
+
+//getters and setters
 public String getName(){
     return this.name;
 }
