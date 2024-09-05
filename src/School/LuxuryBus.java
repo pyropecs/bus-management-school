@@ -6,25 +6,37 @@ public class LuxuryBus extends Bus {
     private boolean airConditioning;
 
     public LuxuryBus(int busNumber, int capacity) {
+
         super(busNumber, capacity);
+
     }
-@Override
+
+    @Override
     public void assign(Person passenger) {
+        if (checkPassengerIsExistOnAnotherBus(passenger)) {
 
-        if (checkEligibilityForPassengers(passenger)) {
-            int passengersCapacity = capacity - 1; // subtracting 1 for driver seat
-            if (passengersCapacity >= passengers.size()) {
-                passengers.add(passenger);
-                passenger.assignBusNumber(getBusNumber());
-                System.out.println("passenger " + passenger.getName() +  " assigned successfully on bus number " + getBusNumber());
+            if (checkEligibilityForPassengers(passenger)) {
+                int passengersCapacity = capacity - 1; // subtracting 1 for driver seat
+                if (passengersCapacity >= passengers.size()) {
+
+                    passengers.add(passenger);
+                    passenger.assignBusNumber(getBusNumber());
+                    System.out.println("passenger " + passenger.getName() + " assigned successfully on bus number " + getBusNumber());
+
+                } else {
+
+                    System.out.println("Bus is Already full");
+                }
+
             } else {
-                System.out.println("Bus is Already full");
+
+                System.out.println("you are not allowed to board this bus");
             }
+
         } else {
-            System.out.println("you are not allowed to board this bus");
+
+            System.out.println(passenger.getName() + " You are already assigned to " + passenger.getAssignedBusNumber());
         }
-
-
     }
 
     public void enableAirConditioning() {
@@ -37,9 +49,10 @@ public class LuxuryBus extends Bus {
 
     private boolean checkEligibilityForPassengers(Person p) {
         if (!(p instanceof Teacher)) {
-            System.out.println("Sorry "+ p.getName()+" you must be a teacher to offer this luxury bus");
+            System.out.println("Sorry " + p.getName() + " you must be a teacher to offer this luxury bus");
             return false;
         }
+
         return true;
     }
 

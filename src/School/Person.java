@@ -1,35 +1,40 @@
 package School;
 
 public abstract class Person {
-private String name;
-private String address;
-private int age;
-private char gender;
-private Integer assignedBusNumber =null ;
-public Person(String name,String address,int age,char gender){
-    this.name = name;
-    this.address = address;
-    this.age = age;
-    this.gender = gender;
-}
-
-abstract void about();
+    private String name;
+    private String address;
+    private int age;
+    private char gender;
+    private Integer assignedBusNumber = null ;
+    public Person(String name,String address,int age,char gender){
+        this.name = name;
+        this.address = address;
+        this.age = age;
+        this.gender = gender;
+    }
+//abstract method
+    abstract void about();
 
 //getters and setters
-public String getName(){
-    return this.name;
-}
-public String getAddress(){
-    return this.address;
-}
-public int getAge(){
-    return this.age;
-}
-public char getGender(){
-    return this.gender;
-}
+    public String getName(){
+
+        return this.name;
+    }
+    public String getAddress(){
+
+        return this.address;
+    }
+    public int getAge(){
+
+        return this.age;
+    }
+    public char getGender(){
+
+        return this.gender;
+    }
 
     public Integer getAssignedBusNumber() {
+
         return assignedBusNumber;
     }
 
@@ -37,6 +42,6 @@ public char getGender(){
         this.assignedBusNumber =  assignedBusNumber;
     }
     public void removeBusNumber(){
-    this.assignedBusNumber = null;
+        this.assignedBusNumber = null;
     }
 }

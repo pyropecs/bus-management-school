@@ -8,8 +8,10 @@ public class NormalBus extends Bus{
 
 
     public void showBusDetails(){
+
         System.out.println("it is a Normal bus");
         System.out.println("The Bus Number " + getBusNumber());
         System.out.println("the capacity of the bus " + getCapacity());
+
     }
 }
