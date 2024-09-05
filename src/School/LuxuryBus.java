@@ -10,10 +10,12 @@ public class LuxuryBus extends Bus {
     }
 @Override
     public void assign(Person passenger) {
+
         if (checkEligibilityForPassengers(passenger)) {
             int passengersCapacity = capacity - 1; // subtracting 1 for driver seat
             if (passengersCapacity >= passengers.size()) {
                 passengers.add(passenger);
+                passenger.assignBusNumber(getBusNumber());
                 System.out.println("passenger " + passenger.getName() +  " assigned successfully on bus number " + getBusNumber());
             } else {
                 System.out.println("Bus is Already full");

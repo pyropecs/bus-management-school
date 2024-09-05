@@ -5,6 +5,7 @@ private String name;
 private String address;
 private int age;
 private char gender;
+private Integer assignedBusNumber =null ;
 public Person(String name,String address,int age,char gender){
     this.name = name;
     this.address = address;
@@ -28,4 +29,14 @@ public char getGender(){
     return this.gender;
 }
 
+    public Integer getAssignedBusNumber() {
+        return assignedBusNumber;
+    }
+
+    public void assignBusNumber(int assignedBusNumber){
+        this.assignedBusNumber =  assignedBusNumber;
+    }
+    public void removeBusNumber(){
+    this.assignedBusNumber = null;
+    }
 }

@@ -17,14 +17,20 @@ public class Bus {
     }
 
 
-//run time polymorphism
+    //run time polymorphism
     public void assign(Driver driver) {
 //assign the bus driver to the bus
-        if (busDriver == null) {
-            this.busDriver = driver;
-            System.out.println("driver " + driver.getName() + " assigned successfully on bus number " + busNumber);
+        if (checkPassengerIsExistOnAnotherBus(driver)) {
+
+            if (busDriver == null) {
+                this.busDriver = driver;
+                driver.assignBusNumber(getBusNumber());
+                System.out.println("driver " + driver.getName() + " assigned successfully on bus number " + busNumber);
+            } else {
+                System.out.println("Already bus driver " + this.busDriver.getName() + " is There");
+            }
         } else {
-            System.out.println("Already bus driver "+ this.busDriver.getName()+ " is There");
+            System.out.println("You are already assigned to another bus");
         }
 
     }
@@ -32,13 +38,19 @@ public class Bus {
 
     public void assign(Person passenger) {
 //assign the person to the bus
-        int passengersCapacity = capacity - 1;
-        if ( passengersCapacity  >= passengers.size() ) {
-            passengers.add(passenger);
-            System.out.println("passenger " + passenger.getName() +  " assigned successfully on bus number " + busNumber);
-        } else {
-            System.out.println("Bus is Already full");
+        if(checkPassengerIsExistOnAnotherBus(passenger)){
+            int passengersCapacity = capacity - 1;
+            if (passengersCapacity >= passengers.size()) {
+                passengers.add(passenger);
+                passenger.assignBusNumber(getBusNumber());
+                System.out.println("passenger " + passenger.getName() + " assigned successfully on bus number " + busNumber);
+            } else {
+                System.out.println("Bus is Already full");
+            }
+        }else{
+            System.out.println("You are already on the bus");
         }
+
 
     }
 
@@ -46,13 +58,17 @@ public class Bus {
 //person will get drop from the bus
         if (passengers.contains(passenger) == true) {
             passengers.remove(passenger);
+            passenger.removeBusNumber();
             System.out.println("passenger " + passenger.getName() + " dropped successfully");
         } else {
-            System.out.println("the Passenger "+passenger.getName() +" is not there in the bus");
+            System.out.println("the Passenger " + passenger.getName() + " is not there in the bus");
         }
 
     }
 
+    private boolean checkPassengerIsExistOnAnotherBus(Person p) {
+        return p.getAssignedBusNumber() == null;
+    }
 
 //getters
 
