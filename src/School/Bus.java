@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Bus {
     private final int busNumber;
     private Driver busDriver;
-    private ArrayList<Person> passengers;
+    private final ArrayList<Person> passengers = new ArrayList<>();
     private int capacity;
 
     public Bus(int busNumber, int capacity) {
@@ -16,7 +16,7 @@ public class Bus {
 
     public void assign(Driver d) {
 
-        if (busDriver != null) {
+        if (busDriver == null) {
             this.busDriver = d;
         } else {
             System.out.println("Already bus driver is There");
@@ -27,7 +27,7 @@ public class Bus {
 
     public void assign(Person p) {
 
-        if (capacity >= passengers.size()) {
+        if ( capacity >= passengers.size() ) {
             passengers.add(p);
             capacity += 1;
         } else {
@@ -38,7 +38,7 @@ public class Bus {
 
     public void dropPerson(Person p) {
 
-        if (passengers.contains(p) == false) {
+        if (passengers.contains(p) == true) {
             passengers.remove(p);
             capacity -= 1;
         } else {
