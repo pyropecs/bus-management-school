@@ -34,7 +34,7 @@ public class Main {
                 case 0:
                     continue;
                 case 1:
-                    //student inputs
+                    //Student Inputs
 
                     System.out.println("Enter Your name");
                     String studentName = sc.nextLine();
@@ -64,7 +64,7 @@ public class Main {
 
                     break;
                 case 2:
-                    //teacher inputs
+                    //Teacher Inputs
                     System.out.println("Enter Your name");
                     String teacherName = sc.nextLine();
 
@@ -96,7 +96,7 @@ public class Main {
 
                     break;
                 case 3:
-                    //driver inputs
+                    //Driver Inputs
                     System.out.println("Enter Your name");
                     String driverName = sc.nextLine();
 
@@ -191,7 +191,7 @@ public class Main {
             luxuryBus.showBusDetails();
 
         } catch (NullPointerException e) {
-
+            // Null pointer will be occurred when inputs are not given properly
             System.out.println("complete every steps before you exit");
         }
 
