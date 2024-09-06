@@ -48,7 +48,7 @@ public class Bus {
         if(checkPassengerIsExistOnAnotherBus(passenger)){
             int passengersCapacity = capacity - 1;
 
-            if (passengersCapacity > passengers.size()) {
+            if (passengersCapacity >= passengers.size()) {
 
                 passengers.add(passenger);
                 passenger.assignBusNumber(getBusNumber());
