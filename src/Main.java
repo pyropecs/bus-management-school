@@ -24,7 +24,7 @@ public class Main {
             System.out.println("4.Create luxury bus");
             System.out.println("5.Create Normal Bus");
             System.out.println("6.Complete");
-            System.out.println("Enter your Choice (1-6)");
+            System.out.println("Enter your Choice (0-6)");
 
             Scanner sc = new Scanner(System.in);
             choice = sc.nextInt();
@@ -36,24 +36,24 @@ public class Main {
                 case 1:
                     //Student Inputs
 
-                    System.out.println("Enter Your name");
+                    System.out.println("Enter Student name");
                     String studentName = sc.nextLine();
 
-                    System.out.println("Enter your address");
+                    System.out.println("Enter Student address");
                     String studentAddress = sc.nextLine();
 
-                    System.out.println("Enter your age");
+                    System.out.println("Enter Student age");
                     int studentAge = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.println("Enter your gender:(M/F)");
+                    System.out.println("Enter Student gender:(M/F)");
                     char studentGender = sc.next().charAt(0);
 
-                    System.out.println("Enter the Roll Number");
+                    System.out.println("Enter Student Roll Number");
                     int studentRollNumber = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.println("Enter the class");
+                    System.out.println("Enter Student class");
                     String studentClass = sc.nextLine();
 
                     student = new Student(studentName, studentAddress, studentAge,
@@ -65,26 +65,26 @@ public class Main {
                     break;
                 case 2:
                     //Teacher Inputs
-                    System.out.println("Enter Your name");
+                    System.out.println("Enter Teacher name");
                     String teacherName = sc.nextLine();
 
-                    System.out.println("Enter your address");
+                    System.out.println("Enter Teacher address");
                     String teacherAddress = sc.nextLine();
 
-                    System.out.println("Enter your age");
+                    System.out.println("Enter Teacher age");
                     int teacherAge = sc.nextInt();
 
-                    System.out.println("Enter your gender:(M/F)");
+                    System.out.println("Enter Teacher gender:(M/F)");
                     char teacherGender = sc.next().charAt(0);
 
-                    System.out.println("Enter the Employee Number");
+                    System.out.println("Enter Employee Number");
                     int employeeNumber = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.println("Enter the Degree");
+                    System.out.println("Enter Teacher Degree");
                     String employeeDegree = sc.nextLine();
 
-                    System.out.println("Enter the salary");
+                    System.out.println("Enter Teacher salary");
                     int salary = sc.nextInt();
                     sc.nextLine();
 
@@ -97,24 +97,24 @@ public class Main {
                     break;
                 case 3:
                     //Driver Inputs
-                    System.out.println("Enter Your name");
+                    System.out.println("Enter Driver name");
                     String driverName = sc.nextLine();
 
-                    System.out.println("Enter your address");
+                    System.out.println("Enter Driver address");
                     String driverAddress = sc.nextLine();
 
-                    System.out.println("Enter your age");
+                    System.out.println("Enter Driver age");
                     int driverAge = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.println("Enter your gender:(M/F)");
+                    System.out.println("Enter Driver gender:(M/F)");
                     char driverGender = sc.next().charAt(0);
 
-                    System.out.println("Enter the license Number");
+                    System.out.println("Enter Driver license Number");
                     int licenseNumber = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.println("Enter the years of experience");
+                    System.out.println("Enter Driver years of experience");
                     int yearsOfExperience = sc.nextInt();
                     sc.nextLine();
 
@@ -132,7 +132,7 @@ public class Main {
                     int luxuryBusNumber = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.println("Enter the capacity");
+                    System.out.println("Enter the Capacity of The Luxury Bus");
                     int luxuryBusCapacity = sc.nextInt();
                     sc.nextLine();
 
@@ -147,7 +147,7 @@ public class Main {
                     int normalBusNumber = sc.nextInt();
                     sc.nextLine();
 
-                    System.out.println("Enter the capacity");
+                    System.out.println("Enter the Capacity of The Normal Bus");
                     int normalBusCapacity = sc.nextInt();
                     sc.nextLine();
 
