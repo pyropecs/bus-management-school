@@ -1,13 +1,13 @@
 package School;
 
-public class NormalBus extends Bus{
+public class NormalBus extends Bus {
 
     public NormalBus(int busNumber, int capacity) {
         super(busNumber, capacity);
     }
 
 
-    public void showBusDetails(){
+    public void showBusDetails() {
 
         System.out.println("it is a Normal bus");
         System.out.println("The Bus Number " + getBusNumber());

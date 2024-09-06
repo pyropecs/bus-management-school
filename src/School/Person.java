@@ -5,30 +5,35 @@ public abstract class Person {
     private String address;
     private int age;
     private char gender;
-    private Integer assignedBusNumber = null ;
-    public Person(String name,String address,int age,char gender){
+    private Integer assignedBusNumber = null;
+
+    public Person(String name, String address, int age, char gender) {
         this.name = name;
         this.address = address;
         this.age = age;
         this.gender = gender;
     }
-//abstract method
+
+    //abstract method
     abstract void about();
 
-//getters and setters
-    public String getName(){
+    //getters and setters
+    public String getName() {
 
         return this.name;
     }
-    public String getAddress(){
+
+    public String getAddress() {
 
         return this.address;
     }
-    public int getAge(){
+
+    public int getAge() {
 
         return this.age;
     }
-    public char getGender(){
+
+    public char getGender() {
 
         return this.gender;
     }
@@ -38,10 +43,11 @@ public abstract class Person {
         return assignedBusNumber;
     }
 
-    public void assignBusNumber(int assignedBusNumber){
-        this.assignedBusNumber =  assignedBusNumber;
+    public void assignBusNumber(int assignedBusNumber) {
+        this.assignedBusNumber = assignedBusNumber;
     }
-    public void removeBusNumber(){
+
+    public void removeBusNumber() {
         this.assignedBusNumber = null;
     }
 }

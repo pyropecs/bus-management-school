@@ -1,10 +1,10 @@
 package School;
 
-public class Student extends Person{
+public class Student extends Person {
     private int rollNumber;
     private String _class;
 
-    public Student(String name,String address,int age,char gender,int rollNumber,String _class){
+    public Student(String name, String address, int age, char gender, int rollNumber, String _class) {
 
         super(name, address, age, gender);
         this.rollNumber = rollNumber;
@@ -16,9 +16,9 @@ public class Student extends Person{
     @Override
     public void about() {
 
-        System.out.println("Im a "+getName()+" from this school Im studying " + _class
+        System.out.println("Im a " + getName() + " from this school Im studying " + _class
                 + " my roll number is " + rollNumber +
-                " address "+getAddress()+" age "+getAge()+" gender "+getGender());
+                " address " + getAddress() + " age " + getAge() + " gender " + getGender());
 
     }
 

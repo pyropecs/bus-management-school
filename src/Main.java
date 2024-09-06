@@ -13,9 +13,10 @@ public class Main {
         Driver driver = null;
         LuxuryBus luxuryBus = null;
         NormalBus normalBus = null;
-        while (!(choice > 5)) {
+        while (choice < 5 && choice >= 0) {
 
             System.out.println("Steps");
+            System.out.println("0.Continue");
             System.out.println("1.Add Student");
             System.out.println("2.Add Teacher");
             System.out.println("3.Add Driver");
@@ -27,7 +28,8 @@ public class Main {
             choice = sc.nextInt();
             sc.nextLine();
             switch (choice) {
-
+                case 0:
+                    continue;
                 case 1:
                     System.out.println("Enter Your name");
                     String studentName = sc.nextLine();
@@ -123,32 +125,31 @@ public class Main {
 
             luxuryBus.showBusDetails();
 
-        //Details of the Normal Bus
-        normalBus.showBusDetails();
-        //To enable air Conditioning
-        luxuryBus.enableAirConditioning();
-        //Assigning driver to luxury bus
-        luxuryBus.assign(driver);
-        //Assigning eligible passenger to luxury bus
-        luxuryBus.assign(teacher);
-        //Dropping off passenger from eligible bus
-        luxuryBus.dropPerson(teacher);
-        //Assigning ineligible passenger to a luxury bus
-        luxuryBus.assign(student);
-        //Assigning passenger to a normal bus
-        normalBus.assign(teacher);
-        //Assigning a passenger to a normal bus
-        normalBus.assign(student);
-        //Assigning a passenger to luxury bus, but they are already in normal bus
-        luxuryBus.assign(teacher);
-        //Disable air conditioning
-        luxuryBus.disableAirConditioning();
-        //Showing luxury Bus without Air condition
-        luxuryBus.showBusDetails();
+            //Details of the Normal Bus
+            normalBus.showBusDetails();
+            //To enable air Conditioning
+            luxuryBus.enableAirConditioning();
+            //Assigning driver to luxury bus
+            luxuryBus.assign(driver);
+            //Assigning eligible passenger to luxury bus
+            luxuryBus.assign(teacher);
+            //Dropping off passenger from eligible bus
+            luxuryBus.dropPerson(teacher);
+            //Assigning ineligible passenger to a luxury bus
+            luxuryBus.assign(student);
+            //Assigning passenger to a normal bus
+            normalBus.assign(teacher);
+            //Assigning a passenger to a normal bus
+            normalBus.assign(student);
+            //Assigning a passenger to luxury bus, but they are already in normal bus
+            luxuryBus.assign(teacher);
+            //Disable air conditioning
+            luxuryBus.disableAirConditioning();
+            //Showing luxury Bus without Air condition
+            luxuryBus.showBusDetails();
         } catch (NullPointerException e) {
             System.out.println("complete every steps before you exit");
         }
-
 
 
     }

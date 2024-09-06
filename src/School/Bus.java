@@ -44,8 +44,8 @@ public class Bus {
 
 
     public void assign(Person passenger) {
-    //Assign the passenger to the respective bus
-        if(checkPassengerIsExistOnAnotherBus(passenger)){
+        //Assign the passenger to the respective bus
+        if (checkPassengerIsExistOnAnotherBus(passenger)) {
             int passengersCapacity = capacity - 1;
 
             if (passengersCapacity >= passengers.size()) {
@@ -59,7 +59,7 @@ public class Bus {
                 System.out.println("Bus is Already full");
 
             }
-        }else{
+        } else {
 
             System.out.println(passenger.getName() + " You are already assigned to " + passenger.getAssignedBusNumber());
 
@@ -83,11 +83,11 @@ public class Bus {
     }
 
     public boolean checkPassengerIsExistOnAnotherBus(Person p) {
-    //To check the passenger is existed in another bus
+        //To check the passenger is existed in another bus
         return p.getAssignedBusNumber() == null;
     }
 
-//Getters
+    //Getters
     public int getBusNumber() {
 
         return busNumber;
