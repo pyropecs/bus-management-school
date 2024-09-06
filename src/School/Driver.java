@@ -13,8 +13,8 @@ public class Driver extends Person {
 
     @Override
     public void about() {
-        System.out.println("Im " + getName() + " Im a Driver in this school having experience " + yearsOfExperience + "with a license number " + licenseNumber
-                + " My Address is " + getAddress() + "My age is" + getAge() + "My gender" + getGender());
+        System.out.println(" Driver Name:" + getName() + "\n Driving Experience:" + yearsOfExperience + "\n License number" + licenseNumber
+                + "\n Address:" + getAddress() + "\n Age:" + getAge() + "\n Gender:" + getGender());
     }
 
 

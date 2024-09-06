@@ -17,9 +17,9 @@ public class Teacher extends Person {
     @Override
     public void about() {
 
-        System.out.println("Im " + getName() + " and I'm a teacher in this school with a degree "
-                + employeeDegree + "with a employee number " + employeeNumber + " having salary of " + salary +
-                " My Address is " + getAddress() + "My age is" + getAge() + "My gender" + getGender());
+        System.out.println(" Teacher Name: " + getName() + "\n Degree:"
+                + employeeDegree + "\n Employee Number:" + employeeNumber + " \n Salary:" + salary +
+                " \n Address:" + getAddress() + "\n Age:" + getAge() + "\n My gender:" + getGender());
 
     }
 
