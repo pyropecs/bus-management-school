@@ -18,7 +18,7 @@ public class Bus {
     }
 
 
-    //Run time polymorphism
+    //Compile time polymorphism
     public void assign(Driver driver) {
         //Assign the bus driver to the bus
         if (checkPassengerIsExistOnAnotherBus(driver)) {
@@ -48,7 +48,7 @@ public class Bus {
         if(checkPassengerIsExistOnAnotherBus(passenger)){
             int passengersCapacity = capacity - 1;
 
-            if (passengersCapacity >= passengers.size()) {
+            if (passengersCapacity > passengers.size()) {
 
                 passengers.add(passenger);
                 passenger.assignBusNumber(getBusNumber());
