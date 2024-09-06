@@ -24,7 +24,7 @@ public class Main {
             System.out.println("4.Create luxury bus");
             System.out.println("5.Create Normal Bus");
             System.out.println("6.Complete");
-            System.out.println("Enter your Choice (1-5)");
+            System.out.println("Enter your Choice (1-6)");
 
             Scanner sc = new Scanner(System.in);
             choice = sc.nextInt();
