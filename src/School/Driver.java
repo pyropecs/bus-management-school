@@ -11,7 +11,8 @@ public Driver(String name,String address,int age,char gender,int licenseNumber,d
 }
 @Override
     public void about(){
-    System.out.println("Im a Driver in this school having experience " + yearsOfExperience + "with a license number "+licenseNumber);
+    System.out.println("Im "+getName() +" Im a Driver in this school having experience " + yearsOfExperience + "with a license number "+licenseNumber
+            + " My Address is "+ getAddress() + "My age is" + getAge() + "My gender" + getGender());
 }
 
 

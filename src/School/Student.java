@@ -16,7 +16,9 @@ public class Student extends Person{
     @Override
     public void about() {
 
-        System.out.println("Im a Student in this school Im studying " + _class + " my roll number is " + rollNumber);
+        System.out.println("Im a "+getName()+" from this school Im studying " + _class
+                + " my roll number is " + rollNumber +
+                " address "+getAddress()+" age "+getAge()+" gender "+getGender());
 
     }
 
