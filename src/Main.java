@@ -158,7 +158,7 @@ public class Main {
 
     }
 
-    //todo:to remove scanner dependency from all create functions
+
     public static Person createPerson(Scanner sc) {
 
         System.out.println("Enter name");
@@ -198,11 +198,12 @@ public class Main {
             try {
                 System.out.println(message);
                 value = sc.nextInt();
+                sc.nextLine();
                 notValid = false;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid " + type + " Please try again");
             }
-            sc.nextLine();
+
         }
         return value;
     }
