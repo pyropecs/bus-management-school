@@ -13,12 +13,12 @@ public class Student extends Person {
     }
 
     //Method overriding run-time polymorphism
-    @Override
+
     public void about() {
 
         System.out.println(" Student Name:" + getName() + "\n Class:" + _class
                 + "\n Roll number:" + rollNumber +
-                " \n Address:" + getAddress() + "\n Age:" + getAge() + "\n Gender" + getGender());
+                " \n Address:" + getAddress() + "\n Age:" + getAge() + "\n Gender:" + getGender());
 
     }
 

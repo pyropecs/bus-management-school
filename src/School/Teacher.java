@@ -14,7 +14,7 @@ public class Teacher extends Person {
 
     }
 
-    @Override
+
     public void about() {
 
         System.out.println(" Teacher Name: " + getName() + "\n Degree:"

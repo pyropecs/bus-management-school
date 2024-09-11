@@ -1,6 +1,6 @@
 package School;
 
-public abstract class Person {
+public  class Person {
     private String name;
     private String address;
     private int age;
@@ -15,7 +15,7 @@ public abstract class Person {
     }
 
     //abstract method
-    abstract void about();
+
 
     //getters and setters
     public String getName() {

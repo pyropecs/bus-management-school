@@ -1,5 +1,6 @@
 import School.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -7,28 +8,27 @@ public class Main {
     public static void main(String[] args) {
         //School student is created
 
-        int choice = 0;
+
         Student student = null;
         Teacher teacher = null;
         Driver driver = null;
         LuxuryBus luxuryBus = null;
         NormalBus normalBus = null;
-
-        while (choice <= 5 && choice >= 0) {
-
+        Scanner sc = new Scanner(System.in);
+        boolean notExitChoice = true;
+        while (notExitChoice) {
+            int choice = 0;
             System.out.println("Steps");
             System.out.println("0.Continue");
             System.out.println("1.Add Student");
             System.out.println("2.Add Teacher");
             System.out.println("3.Add Driver");
-            System.out.println("4.Create luxury bus");
-            System.out.println("5.Create Normal Bus");
-            System.out.println("6.Complete");
-            System.out.println("Enter your Choice (0-6)");
+            System.out.println("4.Create Bus ");
+            System.out.println("5.Complete");
 
-            Scanner sc = new Scanner(System.in);
-            choice = sc.nextInt();
-            sc.nextLine();
+
+            choice = getValidInteger("Enter your Choice (0-5)", sc, "choice");
+
 
             switch (choice) {
                 case 0:
@@ -36,28 +36,14 @@ public class Main {
                 case 1:
                     //Student Inputs
 
-                    System.out.println("Enter Student name");
-                    String studentName = sc.nextLine();
-
-                    System.out.println("Enter Student address");
-                    String studentAddress = sc.nextLine();
-
-                    System.out.println("Enter Student age");
-                    int studentAge = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.println("Enter Student gender:(M/F)");
-                    char studentGender = sc.next().charAt(0);
-
-                    System.out.println("Enter Student Roll Number");
-                    int studentRollNumber = sc.nextInt();
-                    sc.nextLine();
+                    Person studentBasicDetails = createPerson(sc);
+                    int studentRollNumber = getValidInteger("Enter Student Roll Number", sc, "Roll Number");
 
                     System.out.println("Enter Student class");
                     String studentClass = sc.nextLine();
 
-                    student = new Student(studentName, studentAddress, studentAge,
-                            studentGender, studentRollNumber, studentClass);
+                    student = new Student(studentBasicDetails.getName(), studentBasicDetails.getAddress(), studentBasicDetails.getAge(),
+                            studentBasicDetails.getGender(), studentRollNumber, studentClass);
 
                     System.out.println("Student added successfully.");
                     student.about();
@@ -65,31 +51,17 @@ public class Main {
                     break;
                 case 2:
                     //Teacher Inputs
-                    System.out.println("Enter Teacher name");
-                    String teacherName = sc.nextLine();
-
-                    System.out.println("Enter Teacher address");
-                    String teacherAddress = sc.nextLine();
-
-                    System.out.println("Enter Teacher age");
-                    int teacherAge = sc.nextInt();
-
-                    System.out.println("Enter Teacher gender:(M/F)");
-                    char teacherGender = sc.next().charAt(0);
-
-                    System.out.println("Enter Employee Number");
-                    int employeeNumber = sc.nextInt();
-                    sc.nextLine();
+                    Person teacherBasicDetails = createPerson(sc);
+                    int employeeNumber = getValidInteger("Enter Employee Number", sc, "Employee Number");
 
                     System.out.println("Enter Teacher Degree");
                     String employeeDegree = sc.nextLine();
 
-                    System.out.println("Enter Teacher salary");
-                    int salary = sc.nextInt();
-                    sc.nextLine();
 
-                    teacher = new Teacher(teacherName, teacherAddress,
-                            teacherAge, teacherGender, employeeNumber, employeeDegree, salary);
+                    int salary = getValidInteger("Enter Teacher salary", sc, "Teacher Salary");
+
+                    teacher = new Teacher(teacherBasicDetails.getName(), teacherBasicDetails.getAddress(),
+                            teacherBasicDetails.getAge(), teacherBasicDetails.getGender(), employeeNumber, employeeDegree, salary);
 
                     System.out.println("Teacher added successfully.");
                     teacher.about();
@@ -97,29 +69,17 @@ public class Main {
                     break;
                 case 3:
                     //Driver Inputs
-                    System.out.println("Enter Driver name");
-                    String driverName = sc.nextLine();
+                    Person driverBasicDetails = createPerson(sc);
 
-                    System.out.println("Enter Driver address");
-                    String driverAddress = sc.nextLine();
 
-                    System.out.println("Enter Driver age");
-                    int driverAge = sc.nextInt();
-                    sc.nextLine();
+                    int licenseNumber = getValidInteger("Enter Driver license Number", sc, "Driver license Number");
 
-                    System.out.println("Enter Driver gender:(M/F)");
-                    char driverGender = sc.next().charAt(0);
 
-                    System.out.println("Enter Driver license Number");
-                    int licenseNumber = sc.nextInt();
-                    sc.nextLine();
+                    int yearsOfExperience = getValidInteger("Enter Driver years of experience", sc, "Years of Experience");
 
-                    System.out.println("Enter Driver years of experience");
-                    int yearsOfExperience = sc.nextInt();
-                    sc.nextLine();
 
-                    driver = new Driver(driverName, driverAddress,
-                            driverAge, driverGender, licenseNumber, yearsOfExperience);
+                    driver = new Driver(driverBasicDetails.getName(), driverBasicDetails.getAddress(),
+                            driverBasicDetails.getAge(), driverBasicDetails.getGender(), licenseNumber, yearsOfExperience);
 
                     System.out.println("Driver added successfully.");
                     driver.about();
@@ -127,41 +87,40 @@ public class Main {
                     break;
                 case 4:
                     //Luxury bus inputs
-
-                    System.out.println("Enter the Luxury Bus Number");
-                    int luxuryBusNumber = sc.nextInt();
+                    Bus bus = createBus(sc);
+                    System.out.println("What type of bus you want to create ");
+                    System.out.println("1.Luxury bus");
+                    System.out.println("2.Normal bus");
+                    int busType = sc.nextInt();
                     sc.nextLine();
-
-                    System.out.println("Enter the Capacity of The Luxury Bus");
-                    int luxuryBusCapacity = sc.nextInt();
-                    sc.nextLine();
-
-                    luxuryBus = new LuxuryBus(luxuryBusNumber, luxuryBusCapacity);
-
-                    System.out.println("Luxury bus " + luxuryBus.getBusNumber() + " added successfully.");
+                    boolean notValidBusType = true;
+                    while (notValidBusType) {
+                        if (busType == 1) {
+                            luxuryBus = new LuxuryBus(bus.getBusNumber(), bus.getCapacity());
+                            System.out.println("Luxury bus " + luxuryBus.getBusNumber() + " added successfully.");
+                            notValidBusType = false;
+                        } else if (busType == 2) {
+                            normalBus = new NormalBus(bus.getBusNumber(), bus.getCapacity());
+                            System.out.println("Normal bus " + normalBus.getBusNumber() + " added successfully.");
+                            notValidBusType = false;
+                        } else {
+                            System.out.println("Invalid bus type.Please Try again");
+                        }
+                    }
 
                     break;
                 case 5:
-                    //Normal bus inputs
-                    System.out.println("Enter the Normal Bus Number");
-                    int normalBusNumber = sc.nextInt();
-                    sc.nextLine();
-
-                    System.out.println("Enter the Capacity of The Normal Bus");
-                    int normalBusCapacity = sc.nextInt();
-                    sc.nextLine();
-
-                    normalBus = new NormalBus(normalBusNumber, normalBusCapacity);
-
-                    System.out.println("Normal bus " + normalBus.getBusNumber() + " added successfully.");
-
+                    notExitChoice = false;
                     break;
+                default:
+                    System.out.println("Choice didn't exist.Please try again");
+
 
             }
 
-        sc.close();
-        }
 
+        }
+        sc.close();
 
         try {
 
@@ -172,7 +131,8 @@ public class Main {
             //To enable air Conditioning
             luxuryBus.enableAirConditioning();
             //Assigning driver to luxury bus
-            luxuryBus.assign(driver);
+            luxuryBus.assign(driver); //Todo:implement the class whether concurrently not serially
+
             //Assigning eligible passenger to luxury bus
             luxuryBus.assign(teacher);
             //Dropping off passenger from eligible bus
@@ -198,6 +158,54 @@ public class Main {
 
     }
 
+    //todo:to remove scanner dependency from all create functions
+    public static Person createPerson(Scanner sc) {
+
+        System.out.println("Enter name");
+        String personName = sc.nextLine();
+        System.out.println("Enter address");
+        String personAddress = sc.nextLine();
+
+        int personAge = getValidInteger("Enter age", sc, "age");
+
+        boolean NotValidGender = true;
+        char personGender = 'm';
+        while (NotValidGender) {
+            System.out.println("Enter gender:(M/F)");
+            String genderInput = sc.next();
+            personGender = Character.toUpperCase(genderInput.charAt(0));
+            if ((personGender == 'M' || personGender == 'F') && genderInput.length() == 1) {
+                NotValidGender = false;
+            } else {
+                System.out.println("Invalid Gender Type.Please Enter M/F");
+            }
+        }
+
+        return new Person(personName, personAddress, personAge, personGender);
+    }
+
+    public static Bus createBus(Scanner sc) {
+        int busNumber = getValidInteger("Enter the Bus Number", sc, "Bus Number");
+        int busCapacity = getValidInteger("Enter the Capacity of The Bus", sc, "Bus Capacity");
+        return new Bus(busNumber, busCapacity);
+    }
+
+    public static int getValidInteger(String message, Scanner sc, String type) {
+        boolean notValid = true;
+
+        int value = 0;
+        while (notValid) {
+            try {
+                System.out.println(message);
+                value = sc.nextInt();
+                notValid = false;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid " + type + " Please try again");
+            }
+            sc.nextLine();
+        }
+        return value;
+    }
 
 
 }
