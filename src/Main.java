@@ -159,7 +159,7 @@ public class Main {
 
             }
 
-
+        sc.close();
         }
 
 
@@ -197,4 +197,7 @@ public class Main {
 
 
     }
+
+
+
 }

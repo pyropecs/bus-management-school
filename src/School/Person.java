@@ -5,7 +5,7 @@ public abstract class Person {
     private String address;
     private int age;
     private char gender;
-    private Integer assignedBusNumber = null;
+    private Integer assignedBusNumber ;
 
     public Person(String name, String address, int age, char gender) {
         this.name = name;
