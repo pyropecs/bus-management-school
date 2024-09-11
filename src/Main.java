@@ -53,10 +53,8 @@ public class Main {
                     //Teacher Inputs
                     Person teacherBasicDetails = createPerson(sc);
                     int employeeNumber = getValidInteger("Enter Employee Number", sc, "Employee Number");
-
                     System.out.println("Enter Teacher Degree");
                     String employeeDegree = sc.nextLine();
-
 
                     int salary = getValidInteger("Enter Teacher salary", sc, "Teacher Salary");
 
@@ -65,22 +63,16 @@ public class Main {
 
                     System.out.println("Teacher added successfully.");
                     teacher.about();
-
                     break;
                 case 3:
                     //Driver Inputs
+
                     Person driverBasicDetails = createPerson(sc);
-
-
                     int licenseNumber = getValidInteger("Enter Driver license Number", sc, "Driver license Number");
-
-
                     int yearsOfExperience = getValidInteger("Enter Driver years of experience", sc, "Years of Experience");
-
 
                     driver = new Driver(driverBasicDetails.getName(), driverBasicDetails.getAddress(),
                             driverBasicDetails.getAge(), driverBasicDetails.getGender(), licenseNumber, yearsOfExperience);
-
                     System.out.println("Driver added successfully.");
                     driver.about();
 
@@ -123,9 +115,7 @@ public class Main {
                 default:
                     System.out.println("Choice didn't exist.Please try again");
 
-
             }
-
 
         }
         sc.close();
@@ -133,36 +123,44 @@ public class Main {
         try {
 
             //Details of the Luxury Bus
-            luxuryBus.showBusDetails();
-            //Details of the Normal Bus
-            normalBus.showBusDetails();
-            //To enable air Conditioning
-            luxuryBus.enableAirConditioning();
-            //Assigning driver to luxury bus
-            luxuryBus.assign(driver); //Todo:implement the class whether concurrently not serially
+            if(luxuryBus !=null){
+                luxuryBus.showBusDetails();
+                //To enable air Conditioning
+                luxuryBus.enableAirConditioning();
+                //Assigning driver to luxury bus
+                luxuryBus.assign(driver);
+                //Assigning eligible passenger to luxury bus
+                luxuryBus.assign(teacher);
+                //Dropping off passenger from eligible bus
+                luxuryBus.dropPerson(teacher);
+                //Assigning ineligible passenger to a luxury bus
+                luxuryBus.assign(student);
+                //Disable air conditioning
+                luxuryBus.disableAirConditioning();
+                //Showing luxury Bus without Air condition
+                luxuryBus.showBusDetails();
+            }
 
-            //Assigning eligible passenger to luxury bus
-            luxuryBus.assign(teacher);
-            //Dropping off passenger from eligible bus
-            luxuryBus.dropPerson(teacher);
-            //Assigning ineligible passenger to a luxury bus
-            luxuryBus.assign(student);
-            //Assigning passenger to a normal bus
-            normalBus.assign(teacher);
-            //Assigning a passenger to a normal bus
-            normalBus.assign(student);
-            //Assigning a passenger to luxury bus, but they are already in normal bus
-            luxuryBus.assign(teacher);
-            //Disable air conditioning
-            luxuryBus.disableAirConditioning();
-            //Showing luxury Bus without Air condition
-            luxuryBus.showBusDetails();
+            if(normalBus !=null){
+                //Details of the Normal Bus
+                normalBus.showBusDetails();
+                //Assigning passenger to a normal bus
+                normalBus.assign(teacher);
+                //Assigning a passenger to a normal bus
+                normalBus.assign(student);
+            }
+
+
+            if (luxuryBus != null && normalBus != null) {
+                //Assigning a passenger to luxury bus, but they are already in normal bus
+                luxuryBus.assign(teacher);
+            }
+
 
         } catch (NullPointerException e) {
             // Null pointer will be occurred when inputs are not given properly
             System.out.println("complete every steps before you exit");
         }
-
 
     }
 
