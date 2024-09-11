@@ -16,7 +16,6 @@ public class Main {
         NormalBus normalBus = null;
         Scanner sc = new Scanner(System.in);
         boolean notExitChoice = true;
-
         while (notExitChoice) {
             int choice = 0;
             System.out.println("Steps");
@@ -27,7 +26,9 @@ public class Main {
             System.out.println("4.Create Bus ");
             System.out.println("5.Complete");
 
+
             choice = getValidInteger("Enter your Choice (0-5)", sc, "choice");
+
 
             switch (choice) {
                 case 0:
@@ -56,6 +57,7 @@ public class Main {
                     System.out.println("Enter Teacher Degree");
                     String employeeDegree = sc.nextLine();
 
+
                     int salary = getValidInteger("Enter Teacher salary", sc, "Teacher Salary");
 
                     teacher = new Teacher(teacherBasicDetails.getName(), teacherBasicDetails.getAddress(),
@@ -63,15 +65,18 @@ public class Main {
 
                     System.out.println("Teacher added successfully.");
                     teacher.about();
-                    break;
 
+                    break;
                 case 3:
                     //Driver Inputs
                     Person driverBasicDetails = createPerson(sc);
 
+
                     int licenseNumber = getValidInteger("Enter Driver license Number", sc, "Driver license Number");
 
+
                     int yearsOfExperience = getValidInteger("Enter Driver years of experience", sc, "Years of Experience");
+
 
                     driver = new Driver(driverBasicDetails.getName(), driverBasicDetails.getAddress(),
                             driverBasicDetails.getAge(), driverBasicDetails.getGender(), licenseNumber, yearsOfExperience);
@@ -83,45 +88,42 @@ public class Main {
                 case 4:
                     //Luxury bus inputs
                     Bus bus = createBus(sc);
-
                     System.out.println("What type of bus you want to create ");
                     System.out.println("1.Luxury bus");
                     System.out.println("2.Normal bus");
-
                     int busType = sc.nextInt();
                     sc.nextLine();
-
                     boolean notValidBusType = true;
                     while (notValidBusType) {
-
                         if (busType == 1) {
-
                             luxuryBus = new LuxuryBus(bus.getBusNumber(), bus.getCapacity());
                             System.out.println("Luxury bus " + luxuryBus.getBusNumber() + " added successfully.");
                             notValidBusType = false;
-
                         } else if (busType == 2) {
-
                             normalBus = new NormalBus(bus.getBusNumber(), bus.getCapacity());
                             System.out.println("Normal bus " + normalBus.getBusNumber() + " added successfully.");
                             notValidBusType = false;
-
                         } else {
                             System.out.println("Invalid bus type.Please Try again");
                         }
                     }
+
                     break;
                 case 5:
                     notExitChoice = false;
                     break;
                 default:
                     System.out.println("Choice didn't exist.Please try again");
+
+
             }
+
 
         }
         sc.close();
 
         try {
+
             //Details of the Luxury Bus
             luxuryBus.showBusDetails();
             //Details of the Normal Bus
@@ -130,6 +132,7 @@ public class Main {
             luxuryBus.enableAirConditioning();
             //Assigning driver to luxury bus
             luxuryBus.assign(driver); //Todo:implement the class whether concurrently not serially
+
             //Assigning eligible passenger to luxury bus
             luxuryBus.assign(teacher);
             //Dropping off passenger from eligible bus
@@ -167,19 +170,15 @@ public class Main {
 
         boolean NotValidGender = true;
         char personGender = 'm';
-
         while (NotValidGender) {
-
             System.out.println("Enter gender:(M/F)");
             String genderInput = sc.next();
-
             personGender = Character.toUpperCase(genderInput.charAt(0));
             if ((personGender == 'M' || personGender == 'F') && genderInput.length() == 1) {
                 NotValidGender = false;
             } else {
                 System.out.println("Invalid Gender Type.Please Enter M/F");
             }
-
         }
 
         return new Person(personName, personAddress, personAge, personGender);
@@ -193,6 +192,7 @@ public class Main {
 
     public static int getValidInteger(String message, Scanner sc, String type) {
         boolean notValid = true;
+
         int value = 0;
         while (notValid) {
             try {
@@ -200,7 +200,6 @@ public class Main {
                 value = sc.nextInt();
                 sc.nextLine();
                 notValid = false;
-
             } catch (InputMismatchException e) {
                 System.out.println("Invalid " + type + " Please try again");
             }
