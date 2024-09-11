@@ -88,24 +88,32 @@ public class Main {
                 case 4:
                     //Luxury bus inputs
                     Bus bus = createBus(sc);
-                    System.out.println("What type of bus you want to create ");
-                    System.out.println("1.Luxury bus");
-                    System.out.println("2.Normal bus");
-                    int busType = sc.nextInt();
-                    sc.nextLine();
+                    int busType;
                     boolean notValidBusType = true;
+
                     while (notValidBusType) {
+
+                        System.out.println("What type of bus you want to create ");
+                        System.out.println("1.Luxury bus");
+                        System.out.println("2.Normal bus");
+
+                        busType = sc.nextInt();
                         if (busType == 1) {
                             luxuryBus = new LuxuryBus(bus.getBusNumber(), bus.getCapacity());
+
                             System.out.println("Luxury bus " + luxuryBus.getBusNumber() + " added successfully.");
                             notValidBusType = false;
+
                         } else if (busType == 2) {
                             normalBus = new NormalBus(bus.getBusNumber(), bus.getCapacity());
+
                             System.out.println("Normal bus " + normalBus.getBusNumber() + " added successfully.");
                             notValidBusType = false;
+
                         } else {
                             System.out.println("Invalid bus type.Please Try again");
                         }
+                        sc.nextLine();
                     }
 
                     break;
@@ -198,12 +206,12 @@ public class Main {
             try {
                 System.out.println(message);
                 value = sc.nextInt();
-                sc.nextLine();
+
                 notValid = false;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid " + type + " Please try again");
             }
-
+            sc.nextLine();
         }
         return value;
     }
