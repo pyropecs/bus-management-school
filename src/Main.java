@@ -19,7 +19,6 @@ public class Main {
         while (notExitChoice) {
             int choice = 0;
             System.out.println("Steps");
-            System.out.println("0.Continue");
             System.out.println("1.Add Student");
             System.out.println("2.Add Teacher");
             System.out.println("3.Add Driver");
@@ -31,8 +30,6 @@ public class Main {
 
 
             switch (choice) {
-                case 0:
-                    continue;
                 case 1:
                     //Student Inputs
 
@@ -118,48 +115,63 @@ public class Main {
             }
 
         }
-        sc.close();
+
 
         try {
 
-            //Details of the Luxury Bus
-            if(luxuryBus !=null){
+
+            if (luxuryBus != null) {
+
                 luxuryBus.showBusDetails();
-                //To enable air Conditioning
+                // To enable air Conditioning
                 luxuryBus.enableAirConditioning();
-                //Assigning driver to luxury bus
+                // Assigning driver to luxury bus
                 luxuryBus.assign(driver);
-                //Assigning eligible passenger to luxury bus
+                // Assigning eligible passenger to luxury bus
                 luxuryBus.assign(teacher);
-                //Dropping off passenger from eligible bus
+                // Dropping off passenger from eligible bus
                 luxuryBus.dropPerson(teacher);
-                //Assigning ineligible passenger to a luxury bus
+                // Assigning ineligible passenger to a luxury bus
                 luxuryBus.assign(student);
-                //Disable air conditioning
+                // Disable air conditioning
                 luxuryBus.disableAirConditioning();
-                //Showing luxury Bus without Air condition
+                // Showing luxury Bus without Air condition
                 luxuryBus.showBusDetails();
-            }
 
-            if(normalBus !=null){
-                //Details of the Normal Bus
+
+                if (normalBus != null) { //both normal bus and luxury bus exists
+                    // Details of the Normal Bus
+                    normalBus.showBusDetails();
+                    // Assigning passenger to a normal bus
+                    normalBus.assign(teacher);
+                    // Assigning a passenger to a normal bus
+                    normalBus.assign(student);
+                    // Assigning a passenger to luxury bus, but they are already in normal bus
+                    luxuryBus.assign(teacher);
+                } else {
+                    System.out.println("Normal bus does not exist");
+                }
+
+            } else if (normalBus != null) { //only normal bus only exists
+
+                // Details of the Normal Bus
                 normalBus.showBusDetails();
-                //Assigning passenger to a normal bus
+                // Assigning passenger to a normal bus
                 normalBus.assign(teacher);
-                //Assigning a passenger to a normal bus
+                // Assigning a passenger to a normal bus
                 normalBus.assign(student);
-            }
-
-
-            if (luxuryBus != null && normalBus != null) {
-                //Assigning a passenger to luxury bus, but they are already in normal bus
-                luxuryBus.assign(teacher);
+            } else { //neither exists
+                System.out.println("Neither Luxury nor Normal bus exists");
             }
 
 
         } catch (NullPointerException e) {
             // Null pointer will be occurred when inputs are not given properly
             System.out.println("complete every steps before you exit");
+        } catch (Exception e) {
+            System.out.println("something went wrong " + e.getMessage());
+        } finally {
+            sc.close();
         }
 
     }
@@ -175,16 +187,30 @@ public class Main {
         int personAge = getValidInteger("Enter age", sc, "age");
 
         boolean NotValidGender = true;
-        char personGender = 'm';
+        Character personGender = 'm';
         while (NotValidGender) {
             System.out.println("Enter gender:(M/F)");
-            String genderInput = sc.next();
-            personGender = Character.toUpperCase(genderInput.charAt(0));
-            if ((personGender == 'M' || personGender == 'F') && genderInput.length() == 1) {
-                NotValidGender = false;
-            } else {
-                System.out.println("Invalid Gender Type.Please Enter M/F");
+            try {
+                personGender = Character.toUpperCase(sc.next(".").charAt(0));
+
+                if ((personGender.equals('M') || personGender.equals('F'))) {
+
+                    NotValidGender = false;
+
+                } else {
+
+                    System.out.println("Invalid Gender Type.Please Enter M/F");
+
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter only single character either M or F");
+
+            } catch (Exception e) {
+                System.out.println("Something went wrong in gender " + e.getMessage());
+
             }
+            sc.nextLine();
         }
 
         return new Person(personName, personAddress, personAge, personGender);
@@ -202,17 +228,23 @@ public class Main {
         int value = 0;
         while (notValid) {
             try {
+
                 System.out.println(message);
                 value = sc.nextInt();
+                if (value > 0) {
+                    notValid = false;
+                } else {
+                    System.out.println("Invalid " + type + " Please try again");
+                }
 
-                notValid = false;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid " + type + " Please try again");
+            } catch (Exception e) {
+                System.out.println("something went wrong in " + type + e.getMessage());
             }
             sc.nextLine();
         }
         return value;
     }
-
 
 }
